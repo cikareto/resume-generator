@@ -1,0 +1,54 @@
+{
+  "profile": {
+    "name": "Jane Doe",
+    "email": "jane.doe@mail.com",
+    "linkedin": "linkedin.com/in/example-jane-doe",
+    "tel": "098-765-4321"
+  },
+  "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis libero a ornare tempor. Nullam sed eros eget sem dapibus ultrices. Nam scelerisque sem nulla, ac posuere urna varius nec. Nulla eu urna libero. Pellentesque vulputate id purus id gravida. Sed ut justo est. In convallis arcu eros, nec lobortis lacus posuere vulputate.",
+  "experiences": [
+    {
+      "role": "Cat Lover",
+      "startDate": "Apr 1996",
+      "endDate": "Present",
+      "company": "My Moew Moew",
+      "companyLogo": "/assets/cat.jpeg",
+      "companyDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis libero a ornare tempor. Nullam sed eros eget sem dapibus ultrices. Nam scelerisque sem nulla, ac posuere urna varius nec.",
+      "responsibilities": [
+        "Pet my cats, their friends, and their enemies.",
+        "Please my cats, their friends, and their enemies.",
+        "Feed my cats, their friends, and their enemies."
+      ],
+      "techs": "Foo, Bar"
+    },
+    {
+      "role": "Cat Saluter",
+      "startDate": "Jan 2020",
+      "endDate": "Sep 2022",
+      "company": "Self Employed",
+      "companyLogo": "/assets/salute.jpeg",
+      "companyDescription": "In elementum, dui vel mollis eleifend, libero ex vehicula lectus, ac mattis ligula urna quis magna. Fusce luctus justo in erat malesuada, at rhoncus dolor suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec vitae augue risus.",
+      "responsibilities": [],
+      "techs": "Baz"
+    },
+    {
+      "role": "Cat Assistant",
+      "startDate": "Jan 2020",
+      "endDate": "May 2020",
+      "company": "The Destroyer",
+      "companyLogo": "/assets/destroyer.jpeg",
+      "companyDescription": "In elementum, dui vel mollis eleifend, libero ex vehicula lectus, ac mattis ligula urna quis magna. Fusce luctus justo in erat malesuada, at rhoncus dolor suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec vitae augue risus.",
+      "responsibilities": [
+        "Supported my cats destroying home's furniture."
+      ],
+      "techs": "Qux, Fred, Thud"
+    }
+  ],
+  "educations": [
+    {
+      "school": "Cat School",
+      "year": "2014 - 2017",
+      "major": "Bachelor of Cat – BS, Cat Defender"
+    }
+  ]
+}

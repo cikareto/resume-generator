@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Generator</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+</head>
+
+<body>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 2rem 2rem;
+    }
+
+    p,
+    span,
+    li {
+      font-size: 12px;
+      line-height: 1rem;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 0 0 0.25rem;
+    }
+
+    h4 {
+      font-size: 14px;
+      font-weight: normal;
+      margin: 0 0 0.125rem;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1055CC;
+    }
+
+    ul {
+      margin: 0.25rem 0 0.5rem;
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      border-bottom: 1px solid #0000001f;
+      margin: 1rem 0;
+    }
+
+    .mb {
+      margin-bottom: 0.5rem;
+    }
+
+    #profile-section {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+
+    #profile-section .profile__linkedin {
+      display: flex;
+      align-items: center;
+    }
+
+    #profile-section .profile__linkedin img {
+      margin-right: 0.25rem;
+    }
+
+    #experience-section .experience {
+      margin-bottom: 2rem;
+    }
+
+    .experience__header-wrapper {
+      display: grid;
+      grid-template-columns: 4rem auto;
+    }
+
+    .experience__header-wrapper img {
+      height: auto;
+      max-width: 48px;
+    }
+
+    .experience__header-title,
+    .education__title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media print {
+      .new-page {
+        page-break-before: always;
+      }
+    }
+  </style>
+
+  <div id="root"></div>
+
+  <script id="template" type="text/x-handlebars-template">
+
+    <h1>{{profile.name}}</h1>
+
+    <div id="profile-section">
+      <p><b>Email : </b><a href="mailto:{{profile.email}}">{{profile.email}}</a></p>
+      <p class="profile__linkedin"><img src="/assets/linkedin.svg" width="14px" height="auto" /> <a
+          href="https://{{profile.linkedin}}">{{profile.linkedin}}</a></p>
+      <p><b>Tel : </b>{{profile.tel}}</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div id="summary-section">
+      <h2>Summary</h2>
+      <p>
+        {{summary}}
+      </p>
+    </div>
+
+    <div class="divider"></div>
+    
+    <div id="experience-section">
+      <h2>Experience</h2>
+      {{#each experiences}}
+        <div class="experience">
+          <div class="experience__header-wrapper">
+            <img src="{{this.companyLogo}}" alt="{{this.company}}" />
+
+            <div class="experience__header-detail">
+              <div class="experience__header-title">
+                <h3>{{this.role}}</h3>
+                <span>{{this.startDate}} - {{this.endDate}} {{calculate_date_diff}}</span>
+              </div>
+
+              <h4>{{this.company}}</h4>
+              <p class="mb">{{this.companyDescription}}</p>
+            </div>
+
+          </div>
+
+          {{#if this.responsibilities}}
+            <p><b>Responsibilities :</b></p>
+            <ul>
+              {{#each this.responsibilities}}
+                <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          {{/if}}
+          <p class="mb"><b>Techs : </b>{{this.techs}}</p>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="divider"></div>
+
+    <div id="education-section">
+      <h2>Education</h2>
+      {{#each educations}}
+        <div class="education__title mb">
+          <h3>{{this.school}}</h3>
+          <span>{{this.year}}</span>
+        </div>
+        <p>{{this.major}}</p>
+      {{/each}}
+    </div>
+  
+    <div class="divider"></div>
+  </script>
+
+  <script type='text/javascript'>
+    const html = document.getElementById("template").innerHTML
+    const template = Handlebars.compile(html);
+
+    fetch("data.json")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        document.getElementById("root").innerHTML = template(data)
+      })
+      .catch(function (err) {
+        console.error("Error: " + err);
+      });
+
+    // a and b are javascript Date objects
+    function dateDiffInMonths(a, b) {
+      const _MS_PER_MONTH = 1000 * 60 * 60 * 24 * 30;
+
+      // Discard the time and time-zone information.
+      const utc1 = Date.UTC(a.getFullYear(), a.getMonth());
+      const utc2 = Date.UTC(b.getFullYear(), b.getMonth());
+
+      return Math.ceil((utc2 - utc1) / _MS_PER_MONTH);
+    }
+
+    /** months: number of months */
+    function dateDiffPrint(months) {
+      const _years = Math.floor(months / 12)
+      const _months = Math.floor(months % 12)
+
+      return print('year', _years) + ((_years > 0 && _months > 0) ? " " : "") + print('month', _months)
+    }
+
+    /**
+     * unit: string dedicate to 'year' or 'month' 
+     * time: number of time different
+     */
+    function print(unit, time) {
+      if(time === 0) return ""
+
+      return time + " " + unit + ((time > 1) ? "s" : "")
+    }
+
+    Handlebars.registerHelper('calculate_date_diff', function () {
+      const _startDate = new Date(this.startDate)
+      const _endDate = new Date(this.endDate)
+      const months = dateDiffInMonths(_startDate, _endDate);
+      
+      if(isNaN(months) || months === 0) return ''
+      return '(' + dateDiffPrint(months) + ')'
+    })
+  </script>
+</body>
+
+</html>
