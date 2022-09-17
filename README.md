@@ -11,4 +11,4 @@ It's not cool 😎 to use ~~*Google Doc*~~. So I made my life a little harder, d
 ### Page Break
 Forcing page break by using `class="new-page"`
 
-See generated example [here](https://github.com/cikareto/resume-generator/blob/main/resume-generated-example.pdf)
+> *See generated example [here](https://github.com/cikareto/resume-generator/blob/main/resume-generated-example.pdf)*
