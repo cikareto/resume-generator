@@ -1,6 +1,8 @@
-# Resume Generator
+# Resume Generator 
 
-Not cool 😎 to use *Google Doc*. So I made my life a little harder, doing a generator using [Handlebars](https://handlebarsjs.com/guide/#what-is-handlebars) just for creating my simple resume 🤪🤘
+<img src="https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif" width="36"> 
+
+It's not cool to use ~~*Google Doc*~~. So I made my life a little harder, doing a generator using [Handlebars](https://handlebarsjs.com/guide/#what-is-handlebars) just for creating my simple resume 🤪🤘
 
 ## Installation
 - Use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) Extension to launch a local development server
@@ -10,3 +12,5 @@ Not cool 😎 to use *Google Doc*. So I made my life a little harder, doing a ge
 - Simply print your browser's page to save in PDF format
 ### Page Break
 Forcing page break by using `class="new-page"`
+
+See generated example [here](https://github.com/cikareto/resume-generator/blob/main/resume-generated-example.pdf)
