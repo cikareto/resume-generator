@@ -1,8 +1,6 @@
 # Resume Generator 
 
-<img src="https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif" width="36"> 
-
-It's not cool to use ~~*Google Doc*~~. So I made my life a little harder, doing a generator using [Handlebars](https://handlebarsjs.com/guide/#what-is-handlebars) just for creating my simple resume 🤪🤘
+It's not cool 😎 to use ~~*Google Doc*~~. So I made my life a little harder, doing a generator using [Handlebars](https://handlebarsjs.com/guide/#what-is-handlebars) just for creating my simple resume 🤪🤘
 
 ## Installation
 - Use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) Extension to launch a local development server
